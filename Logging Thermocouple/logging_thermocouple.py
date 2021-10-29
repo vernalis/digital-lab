@@ -38,7 +38,6 @@ file = folder + filename
 with open(file,'a',newline='') as f:
     writer = csv.writer(f, delimiter=',')
     writer.writerow(['Date']+['Time']+['Temp_c'])
-f.close()
 
 # Count number of thermocouple read attempts
 try_count = 0
@@ -66,7 +65,6 @@ while True:
             with open(file,'a',newline='') as f:
                 writer = csv.writer(f, delimiter=',')
                 writer.writerow([str(date.today())]+[datetime.now().strftime('%H:%M:%S')]+[tempC])
-            f.close()
             try_count = 0
             lcd.clear()
             lcd.message = "Temp: {}".format(tempC)
