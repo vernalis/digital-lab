@@ -41,7 +41,7 @@ elif "VER_THERM_LOG" in os.environ:
     folder = os.environ["VER_THERM_LOG"]
 
 filename = str((datetime.now().isoformat(timespec='seconds')))+".csv"
-file = folder + filename
+file = os.path.join(folder, filename)
 
 # Create header row
 with open(file,'a',newline='') as f:
