@@ -84,9 +84,7 @@ while True:
         try_count = try_count+1
         print(try_count)
         # If 3 consecutive fails, probably a real error
-        if try_count < 3:
-            pass
-        else:
+        if try_count >= 3:
             raise
     else:
         # Wait for next timepoint (15s)
