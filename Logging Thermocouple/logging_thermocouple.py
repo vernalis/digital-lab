@@ -70,22 +70,25 @@ while True:
     # Get temp, monitor error in reading sensor (~1.3% failure rate)
     try:
         temp_c = max31855.temperature
-        # Append temp to file with timestamp
-        with open(file,'a',newline='') as f:
-            writer = csv.writer(f, delimiter=',')
-            date_str = str(date.today())
-            time_str = datetime.now().strftime('%H:%M:%S')
-            writer.writerow([date_str, time_str, temp_c])
-        try_count = 0
-        lcd.clear()
-        lcd.message = "Temp: {}".format(temp_c)
-        print(temp_c)
     except RuntimeError:
         try_count = try_count+1
         print(try_count)
         # If 3 consecutive fails, probably a real error
         if try_count >= 3:
             raise
-    else:
-        # Wait for next timepoint (15s)
-        sleep(15)
+        # Otherwise continue to next loop and try again
+        continue
+
+    # Append temp to file with timestamp
+    with open(file,'a',newline='') as f:
+        writer = csv.writer(f, delimiter=',')
+        date_str = str(date.today())
+        time_str = datetime.now().strftime('%H:%M:%S')
+        writer.writerow([date_str, time_str, temp_c])
+    try_count = 0
+    lcd.clear()
+    lcd.message = "Temp: {}".format(temp_c)
+    print(temp_c)
+
+    # Wait for next timepoint (15s)
+    sleep(15)
