@@ -1,3 +1,5 @@
+"""A Raspberry Pi based thermocouple that logs datapoints to a csv file."""
+
 import csv
 from datetime import datetime, date
 from time import sleep
@@ -42,7 +44,7 @@ try_count = 0
 
 # GPIO17 as an input pin, watching for reset button being pressed
 # If reset button closed (pressed) then returns False
-# Set up GPIO pins 
+# Set up GPIO pins
 # Do not show any GPIO warnings
 IO.setwarnings(False)
 # Programming the GPIO by BCM pin numbers (PIN11 as ‘GPIO17’)
@@ -55,7 +57,7 @@ while True:
     button_open = IO.input(17)
     if button_open == False:
         break
-    else:    
+    else:
         # Get temp, monitor error in reading sensor (~1.3% failure rate)
         try:
             tempC = max31855.temperature
