@@ -1,6 +1,8 @@
 """A Raspberry Pi based thermocouple that logs datapoints to a csv file."""
 
 import csv
+import os
+import sys
 from datetime import date, datetime
 from time import sleep
 
@@ -29,8 +31,15 @@ i2c = busio.I2C(board.SCL, board.SDA)
 lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 lcd.clear()
 
-# Define log file location
-#folder = "/home/USER/Documents/" # Replace USER with Pi username and then uncomment
+# Define log file location. Default to user home folder, but allow overriding via:
+# - Command line argument provided to script
+# - VER_THERM_LOG environment variable
+folder = os.path.expanduser("~")
+if len(sys.argv) >= 2:
+    folder = sys.argv[1]
+elif "VER_THERM_LOG" in os.environ:
+    folder = os.environ["VER_THERM_LOG"]
+
 filename = str((datetime.now().isoformat(timespec='seconds')))+".csv"
 file = folder + filename
 
