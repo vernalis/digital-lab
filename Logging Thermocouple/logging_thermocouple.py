@@ -48,7 +48,7 @@ with open(file,'a',newline='') as f:
     writer = csv.writer(f, delimiter=',')
     writer.writerow(['Date', 'Time', 'Temp_c'])
 
-# Count number of thermocouple read attempts
+# Count number of consecutive failed thermocouple read attempts
 try_count = 0
 
 # GPIO17 as an input pin, watching for reset button being pressed
