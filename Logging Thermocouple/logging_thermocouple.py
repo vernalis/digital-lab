@@ -1,13 +1,14 @@
 """A Raspberry Pi based thermocouple that logs datapoints to a csv file."""
 
 import csv
-from datetime import datetime, date
+from datetime import date, datetime
 from time import sleep
+
+import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
+import adafruit_max31855
 import board
 import busio
 import digitalio
-import adafruit_max31855
-import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 import RPi.GPIO as IO
 
 # Setup thermocouple interface
