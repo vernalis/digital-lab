@@ -57,28 +57,28 @@ while True:
     button_open = IO.input(17)
     if button_open == False:
         break
-    else:
-        # Get temp, monitor error in reading sensor (~1.3% failure rate)
-        try:
-            tempC = max31855.temperature
-            # Append temp to file with timestamp
-            with open(file,'a',newline='') as f:
-                writer = csv.writer(f, delimiter=',')
-                date_str = str(date.today())
-                time_str = datetime.now().strftime('%H:%M:%S')
-                writer.writerow([date_str, time_str, tempC])
-            try_count = 0
-            lcd.clear()
-            lcd.message = "Temp: {}".format(tempC)
-            print(tempC)
-        except RuntimeError:
-            try_count = try_count+1
-            print(try_count)
-            # If 3 consecutive fails, probably a real error
-            if try_count < 3:
-                pass
-            else:
-                raise
+
+    # Get temp, monitor error in reading sensor (~1.3% failure rate)
+    try:
+        tempC = max31855.temperature
+        # Append temp to file with timestamp
+        with open(file,'a',newline='') as f:
+            writer = csv.writer(f, delimiter=',')
+            date_str = str(date.today())
+            time_str = datetime.now().strftime('%H:%M:%S')
+            writer.writerow([date_str, time_str, tempC])
+        try_count = 0
+        lcd.clear()
+        lcd.message = "Temp: {}".format(tempC)
+        print(tempC)
+    except RuntimeError:
+        try_count = try_count+1
+        print(try_count)
+        # If 3 consecutive fails, probably a real error
+        if try_count < 3:
+            pass
         else:
-            # Wait for next timepoint (15s)
-            sleep(15)
+            raise
+    else:
+        # Wait for next timepoint (15s)
+        sleep(15)
