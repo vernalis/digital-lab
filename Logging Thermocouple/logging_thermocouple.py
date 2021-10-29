@@ -64,7 +64,9 @@ while True:
             # Append temp to file with timestamp
             with open(file,'a',newline='') as f:
                 writer = csv.writer(f, delimiter=',')
-                writer.writerow([str(date.today())]+[datetime.now().strftime('%H:%M:%S')]+[tempC])
+                date_str = str(date.today())
+                time_str = datetime.now().strftime('%H:%M:%S')
+                writer.writerow([date_str]+[time_str]+[tempC])
             try_count = 0
             lcd.clear()
             lcd.message = "Temp: {}".format(tempC)
