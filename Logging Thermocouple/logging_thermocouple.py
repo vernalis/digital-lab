@@ -40,13 +40,13 @@ if len(sys.argv) >= 2:
 elif "VER_THERM_LOG" in os.environ:
     folder = os.environ["VER_THERM_LOG"]
 
-filename = str((datetime.now().isoformat(timespec='seconds')))+".csv"
+filename = str((datetime.now().isoformat(timespec="seconds"))) + ".csv"
 file = os.path.join(folder, filename)
 
 # Create header row
-with open(file,'a',newline='') as f:
-    writer = csv.writer(f, delimiter=',')
-    writer.writerow(['Date', 'Time', 'Temp_c'])
+with open(file, "a", newline="") as f:
+    writer = csv.writer(f, delimiter=",")
+    writer.writerow(["Date", "Time", "Temp_c"])
 
 # Count number of consecutive failed thermocouple read attempts
 try_count = 0
@@ -71,7 +71,7 @@ while True:
     try:
         temp_c = max31855.temperature
     except RuntimeError:
-        try_count = try_count+1
+        try_count = try_count + 1
         print(try_count)
         # If 3 consecutive fails, probably a real error
         if try_count >= 3:
@@ -80,10 +80,10 @@ while True:
         continue
 
     # Append temp to file with timestamp
-    with open(file,'a',newline='') as f:
-        writer = csv.writer(f, delimiter=',')
+    with open(file, "a", newline="") as f:
+        writer = csv.writer(f, delimiter=",")
         date_str = str(date.today())
-        time_str = datetime.now().strftime('%H:%M:%S')
+        time_str = datetime.now().strftime("%H:%M:%S")
         writer.writerow([date_str, time_str, temp_c])
     try_count = 0
     lcd.clear()
