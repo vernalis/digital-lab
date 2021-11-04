@@ -1,5 +1,6 @@
 # Raspberry Pi Based Logging Thermocouple
 
+[![DOI:10.33774/chemrxiv-2021-cxs25](https://img.shields.io/badge/DOI-10.33774%2Fchemrxiv--2021--cxs25-blue)][paper]
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](../LICENSE)
 
 ## Publication
@@ -10,10 +11,10 @@ Detailed information about the design and testing of these files is available in
 
 If you have used this project as a resource in your research, please cite:
 
-> David Lee Walmsley, Stephen Hilton, Emilie Sellier, Matthew Penny, Daniel Maddox (2021) “Control and Monitoring of Temperature in 3D-Printed Circular Disk Reactors for Continuous Flow Photochemistry using Raspberry Pi Based Software”
+> David Lee Walmsley, Stephen Hilton, Emilie Sellier, Matthew Penny, Daniel Maddox (2021) “Control and Monitoring of Temperature in 3D-Printed Circular Disk Reactors for Continuous Flow Photochemistry using Raspberry Pi Based Software” ChemRxiv. DOI: [10.33774/chemrxiv-2021-cxs25][paper]
 
-[paper]: https://github.com/vernalis/3Dprint_files/blob/master/Photo-CDR%20Cooler/Control%20and%20Monitoring%20of%20Temperature%20in%203D-Printed%20Photo-CDRs.pdf
-[si]: https://github.com/vernalis/3Dprint_files/blob/master/Photo-CDR%20Cooler/Control%20and%20Monitoring%20of%20Temperature%20in%203D-Printed%20Photo-CDRs%20Supplementary%20Information.pdf
+[paper]: https://doi.org/10.33774/chemrxiv-2021-cxs25
+[si]: https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/617fc58581c4fc77f2e8b692/original/control-and-monitoring-of-temperature-in-3d-printed-circular-disk-reactors-for-continuous-flow-photochemistry-using-raspberry-pi-based-software.pdf
 
 ## Assembly Instructions
 
@@ -55,6 +56,19 @@ Fritzing and circuit diagrams follow below:
 ## Code & Usage
 
 Datalogging code written and tested in Python 3.7.3 using Thonny IDE. Thermocouple interface code based on that supplied by manufacturer [[ref][ADA269]]. Screen I2C interface code based on that supplied by manufacturer [[ref][ADA716]].
+
+By default the script will output a CSV to the user folder, however can also be configured to output to a defined location by either of two methods. First, by providing the path as a command line argument:
+
+```
+python logging_thermocouple.py /path/to/output/folder/
+```
+
+Or secondly by setting an environment variable:
+
+```
+export VER_THERM_LOG=/path/to/output/folder
+python logging_thermocouple.py
+```
 
 Once started, the code will log a temperature every 15 seconds to a csv file in a pre-defined file location and update the LCD screen accordingly.
 To prevent log file corruption, press and hold the reset button to ‘break’ and stop the code loop.
