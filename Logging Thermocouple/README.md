@@ -53,19 +53,20 @@ Fritzing and circuit diagrams follow below:
 [fritzing]: Fritzing.png
 [ADA269]: https://learn.adafruit.com/thermocouple/overview
 [ADA716]: https://learn.adafruit.com/rgb-lcd-shield/overview
+
 ## Code & Usage
 
 Datalogging code written and tested in Python 3.7.3 using Thonny IDE. Thermocouple interface code based on that supplied by manufacturer [[ref][ADA269]]. Screen I2C interface code based on that supplied by manufacturer [[ref][ADA716]].
 
 By default the script will output a CSV to the user folder, however can also be configured to output to a defined location by either of two methods. First, by providing the path as a command line argument:
 
-```
+```bash
 python logging_thermocouple.py /path/to/output/folder/
 ```
 
 Or secondly by setting an environment variable:
 
-```
+```bash
 export VER_THERM_LOG=/path/to/output/folder
 python logging_thermocouple.py
 ```
