@@ -23,8 +23,8 @@ If you have used this project as a resource in your research, please cite:
 
 >Citation to be added here on publication
 
-[paper]: paper-link-here
-[si]: si-link-here
+[paper]: 2023%20Maddox%20Inline%20Detector%20Paper.pdf
+[si]: 2023%20Maddox%20Inline%20Detector%20Supplementary%20Information.pdf
 
 ## Bill of Materials
 
@@ -56,9 +56,9 @@ The following components are required to construct our design. The supplier we u
 This repository contains the following assets to enable reproduction of the device:
 
 * Original publication - full documentation for the device is provided within the paper and supplementary information
-* inline_detector.py - python code used to operate the device
 * 3D Printer .stl Files - files for both the detector and Raspberry Pi housing
 * PCB Gerber Files - to allow manufacture of custom PCBs with alternative suppliers
+* Python code used to operate the device (inline_detector.py)
 
 ### 3D Printer .stl Files
 
@@ -70,6 +70,8 @@ All Pi case components were printed in PETG due to the higher thermal tolerance,
 
 The detector housing parts were all printed in PLA. Take care to print interlocking parts in the same orientation on the print bed to ensure a good fit.
 
+See Supplementary Information section S4 for further details, such as printer settings.
+
 ### PCB Gerber Files
 
 Zipped Gerber files are provided to allow manufacture of the custom PCBs at a supplier of your choice.
@@ -80,4 +82,23 @@ Alternatively, for convenience, use the following links to use the same supplier
 
 [Detector PCB](https://aisler.net/p/HRKGEPJB)
 
+See Supplementary Information section S3 for further details on circuit design. See Supplementary Information section S5 for PCB assembly.
+
 **Note:** The HAT PCB available at publication has undergone a minor revision to the board shown in the publication. This revision decreases the board size by ~1.5mm, allowing compatibility with the Raspberry Pi Zero platform.
+
+### Raspberry Pi Configuration and Operation
+
+A Raspberry Pi running Raspberry Pi OS Bullseye was used. VNC and I2C interfaces were enabled.
+
+The following python libraries were installed:
+
+* CircuitPython (Blinka) by Adafruit for interfacing with their products
+* adafruit-circuitpython-as7341 for the sensor device itself
+* matplotlib for graphical representation of the sensor data
+* pandas for data processing
+
+Once configured, operating the Raspberry Pi through VNC to allow a graphical interface, inline_detector.py can be run. After 3 initial baseline readings a graphical output of the sensor data is shown. This then updates every 2.5s with the next datapoint. Data is saved in a .csv file at each update.
+
+At the end of the experiment, closing the window will terminate the code, saving a .png of the graph to the same folder as the .csv files.
+
+See Supplementary Information section S6 for full details.
