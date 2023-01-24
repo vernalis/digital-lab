@@ -23,8 +23,8 @@ If you have used this project as a resource in your research, please cite:
 
 >Citation to be added here on publication
 
-[paper]: paper-link-here
-[si]: si-link-here
+[paper]: 2023%20Maddox%20Inline%20Detector%20Paper.pdf
+[si]: 2023%20Maddox%20Inline%20Detector%20Supplementary%20Information.pdf
 
 ## Bill of Materials
 The following components are required to construct our design. The supplier we used is provided, however parts should be available from alternative suppliers too. 
