@@ -55,10 +55,11 @@ The following components are required to construct our design. The supplier we u
 
 This repository contains the following assets to enable reproduction of the device:
 
-* Original publication - full documentation for the device is provided within the paper and supplementary information
-* 3D Printer .stl Files - files for both the detector and Raspberry Pi housing
-* PCB Gerber Files - to allow manufacture of custom PCBs with alternative suppliers
-* Python code used to operate the device (inline_detector.py)
+* **Original publication** - full documentation for the device is provided within the paper and supplementary information
+* **3D Printed Parts** - .stl files for both the detector and Raspberry Pi housing
+* **PCB Gerber Files** - to allow manufacture of custom PCBs with alternative suppliers
+* **Code** - Python code used to operate the device (inline_detector.py) and a bash script to automate initial configuration (setup-script.sh)
+
 
 ### 3D Printer .stl Files
 
@@ -88,17 +89,39 @@ See Supplementary Information section S3 for further details on circuit design. 
 
 ### Raspberry Pi Configuration and Operation
 
-A Raspberry Pi running Raspberry Pi OS Bullseye was used. VNC and I2C interfaces were enabled.
+#### Configuration
 
-The following python libraries were installed:
+A Raspberry Pi running Raspberry Pi OS Bullseye was used in combination with the following python libraries:
 
 * CircuitPython (Blinka) by Adafruit for interfacing with their products
 * adafruit-circuitpython-as7341 for the sensor device itself
 * matplotlib for graphical representation of the sensor data
 * pandas for data processing
 
-Once configured, operating the Raspberry Pi through VNC to allow a graphical interface, inline_detector.py can be run. After 3 initial baseline readings a graphical output of the sensor data is shown. This then updates every 2.5s with the next datapoint. Data is saved in a .csv file at each update.
+The device was interfaced with predominantly via VNC to allow a familiar GUI experience.
+
+Use the following commands in the Raspberry Pi terminal to download and run an automated configuration script to install all required libraries and the inline detector code itself in one simple process.
+
+~~~
+wget https://raw.githubusercontent.com/vernalis/digitallab/main/Inline%20Detector/Code/setup-script.sh
+
+chmod u+x setup-script.sh
+
+./setup-script.sh
+~~~
+
+See Supplementary Information section S6.1 for a full step-by-step guide to the configuration process.
+
+#### Operation
+
+Once configured, operating the Raspberry Pi through VNC to allow a graphical interface, initiate the code by opening a terminal window and enter the command:
+
+~~~
+python inline_detector.py
+~~~
+
+After 3 initial baseline readings a graphical output of the sensor data is shown. This then updates every 2.5s with the next datapoint. Data is saved in a .csv file at each update.
 
 At the end of the experiment, closing the window will terminate the code, saving a .png of the graph to the same folder as the .csv files.
 
-See Supplementary Information section S6 for full details.
+See Supplementary Information section S6.2 for full details.
