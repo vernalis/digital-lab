@@ -60,7 +60,6 @@ This repository contains the following assets to enable reproduction of the devi
 * **PCB Gerber Files** - to allow manufacture of custom PCBs with alternative suppliers
 * **Code** - Python code used to operate the device (inline_detector.py) and a bash script to automate initial configuration (setup-script.sh)
 
-
 ### 3D Printer .stl Files
 
 Files are separated into two folders - components for the Raspberry Pi case, and components for the detector housing.
@@ -102,7 +101,7 @@ The device was interfaced with predominantly via VNC to allow a familiar GUI exp
 
 Use the following commands in the Raspberry Pi terminal to download and run an automated configuration script to install all required libraries and the inline detector code itself in one simple process.
 
-~~~
+~~~bash
 wget https://raw.githubusercontent.com/vernalis/digitallab/main/Inline%20Detector/Code/setup-script.sh
 
 chmod u+x setup-script.sh
@@ -116,7 +115,7 @@ See Supplementary Information section S6.1 for a full step-by-step guide to the 
 
 Once configured, operating the Raspberry Pi through VNC to allow a graphical interface, initiate the code by opening a terminal window and enter the command:
 
-~~~
+~~~bash
 python inline_detector.py
 ~~~
 
