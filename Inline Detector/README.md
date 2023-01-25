@@ -102,10 +102,8 @@ The device was interfaced with predominantly via VNC to allow a familiar GUI exp
 Use the following commands in the Raspberry Pi terminal to download and run an automated configuration script to install all required libraries and the inline detector code itself in one simple process.
 
 ~~~bash
-wget https://raw.githubusercontent.com/vernalis/digitallab/main/Inline%20Detector/Code/setup-script.sh
-
+wget https://raw.githubusercontent.com/vernalis/digital-lab/main/Inline%20Detector/Code/setup-script.sh
 chmod u+x setup-script.sh
-
 ./setup-script.sh
 ~~~
 
