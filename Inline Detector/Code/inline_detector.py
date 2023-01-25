@@ -65,7 +65,7 @@ pwm_output.start(100)
 # Define location for data to be stored
 # Output raw and normalised data as csv file
 # Output png image of graph at the end of the experiment
-FOLDER = os.path.join(os.getcwd(), "data")
+FOLDER = os.path.join(os.getcwd(), "data", "")
 if not os.path.isdir(FOLDER):
     os.mkdir(FOLDER)
 # Filename contains start datetime of experiment
