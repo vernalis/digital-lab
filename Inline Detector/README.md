@@ -1,6 +1,7 @@
 # Raspberry Pi / Adafruit AS7341 Based Inline Detector
 
-*Add DOI shield here on publication* [![License: MIT](https://img.shields.io/badge/License-MIT-green)](../LICENSE)
+[![DOI:10.26434/chemrxiv-2023-r52zg](https://img.shields.io/badge/DOI-10.26434%2Fchemrxiv--2023--r52zg-blue)][paper]
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](../LICENSE)
 
 ## Overview
 
@@ -21,10 +22,10 @@ Details about the design and development of the device can be found in the accom
 
 If you have used this project as a resource in your research, please cite:
 
->Citation to be added here on publication
+>Maddox D, Davidson JEP, Guetzoyan L, Walmsley L. Development of a Low-Cost Multi-Wavelength Inline Detector for Slug Detection in Continuous Flow. ChemRxiv. Cambridge: Cambridge Open Engage; 2023;  This content is a preprint and has not been peer-reviewed. DOI: [10.26434/chemrxiv-2023-r52zg][paper]
 
-[paper]: 2023%20Maddox%20Inline%20Detector%20Paper.pdf
-[si]: 2023%20Maddox%20Inline%20Detector%20Supplementary%20Information.pdf
+[paper]: https://doi.org/10.26434/chemrxiv-2023-r52zg
+[si]: https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/63d144546bc5cab0271aab7a/original/supplementary-information.pdf
 
 ## Bill of Materials
 
